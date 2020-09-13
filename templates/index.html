@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Alışveriş Sepeti</title>
+</head>
+<body>
+{#<h1>#}
+{#    {% if username %} Hoşgeldin {{ username }} {% else %} Kullanıcı Bulunamadı!{% endif %}#}
+{#</h1>#}
+{% for product in products %}
+    <div style="width: 300px; height: 200px; display: inline-block; border: 1px red dotted; margin-left: 25px;">
+        <h3>{{ product.name }}</h3>
+        <img src="{{ product.image.url }}" alt="" width="50" height="50">
+        <hr>
+
+        <b>{{ product.price }}</b>
+        <a href="{% url 'cart_add' id=product.id %}">
+            <button>Sepete Ekle</button>
+        </a>
+    </div>
+
+{% endfor %}
+
+<h1>SEPET MEVCUT ÜRÜN SAYISI = {{ cart.get_total_items }}</h1>
+
+</body>
+</html>

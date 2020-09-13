@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Alışveriş Sepeti</title>
+</head>
+<body>
+<h1 style="text-align: center;">Sepet Detayları</h1>
+{% for item in cart %}
+    <div style="width: 300px; height: 200px; display: inline-block; border: 1px red dotted; margin-left: 25px;">
+        <h3>{{ item.product }}</h3>
+        <img src="{{ item.product.image.url }}" alt="" width="50" height="50">
+        <hr>
+
+        <b>{{ item.price }}</b>
+        <a href="{% url 'cart_remove' id=item.product.id %}">
+            <button>Sepetten Çıkar</button>
+        </a>
+    </div>
+
+{% endfor %}
+
+</body>
+</html>
