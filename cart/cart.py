@@ -46,7 +46,10 @@ class Cart:
 
     def __iter__(self):
         """
-        Sepetteki ürünleri veritabanından alabiliriz
+        Sepetteki ürünlerin bilgilerini veritabanından getirebiliriz.
+        Bunu şu şekilde düşünelim bu fonksiyon
+                    for item in cart
+        yapılınca çalışacak fonksiyon
         """
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
